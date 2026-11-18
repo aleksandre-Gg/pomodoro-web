@@ -18,7 +18,7 @@ const updateTimer = () => {
 start.addEventListener("click", () => {
     if (interval) return; //already running once 
     if (timeRemaining <= 0) return;
-    
+
     interval = setInterval(() => {
         timeRemaining = timeRemaining - 1; //subtracted with each run
         updateTimer()   
@@ -31,7 +31,10 @@ start.addEventListener("click", () => {
 })
 
 reset.addEventListener("click", () => {
-    
+   clearInterval(interval) 
+   interval = null;
+   timeRemaining = 50 * 60
+   updateTimer();
 })
 
 updateTimer()
