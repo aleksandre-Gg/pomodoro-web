@@ -16,16 +16,18 @@ const updateTimer = () => {
 }
 
 start.addEventListener("click", () => {
+    if (interval) return; //already running once 
+    if (timeRemaining <= 0) return;
+    
+    interval = setInterval(() => {
+        timeRemaining = timeRemaining - 1; //subtracted with each run
+        updateTimer()   
 
-  interval = setInterval(() => {
-    timeRemaining = timeRemaining - 1; //subtracted with each run
-    updateTimer()   
-    if (timeRemaining === 0) {
+    if (timeRemaining <= 0) { //safer to prevent going below 0
         clearInterval(interval)
+        interval = null;
     }     
     }, 1000); //runs every sec
-  
-  console.log(timeRemaining);
 })
 
 reset.addEventListener("click", () => {
