@@ -54,6 +54,7 @@ start.addEventListener("click", () => {
 reset.addEventListener("click", () => {
    clearInterval(interval) 
    interval = null;
+   isRunning = false
    timeRemaining = 50 * 60
    updateTimer();
    
