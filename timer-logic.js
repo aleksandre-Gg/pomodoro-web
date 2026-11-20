@@ -4,6 +4,7 @@ const timer = document.getElementById("timer");
 
 let timeRemaining = 3000; //50 minutes
 let interval;
+let isRunning = false;
 
 const updateTimer = () => {
     const minutes = Math.floor(timeRemaining / 60);
@@ -15,10 +16,23 @@ const updateTimer = () => {
     //padstart works on strings only 
 }
 
+const startToPause = () => {
+  if (isRunning) {
+    start.dataset.state = "running";
+    start.textContent = "\u2161"; //II
+  } else {
+    start.dataset.state = "idle";
+    start.textContent = "Start";
+  }
+}
+
 start.addEventListener("click", () => {
     if (interval) return; //already running once 
     if (timeRemaining <= 0) return;
 
+    isRunning = true;
+    startToPause();
+    
     interval = setInterval(() => {
         timeRemaining = timeRemaining - 1; //subtracted with each run
         updateTimer()   
@@ -35,6 +49,10 @@ reset.addEventListener("click", () => {
    interval = null;
    timeRemaining = 50 * 60
    updateTimer();
+   
+   start.dataset.state = "idle";
+   start.textContent = "Start";
+   
 })
 
 updateTimer()
