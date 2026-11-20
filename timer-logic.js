@@ -27,7 +27,14 @@ const startToPause = () => {
 }
 
 start.addEventListener("click", () => {
-    if (interval) return; //already running once 
+    if (isRunning) { //stop interval, timeRemaining stores its value
+        clearInterval(interval)
+        interval = null;
+        isRunning = false;
+        startToPause();
+        return;
+    }
+
     if (timeRemaining <= 0) return;
 
     isRunning = true;
