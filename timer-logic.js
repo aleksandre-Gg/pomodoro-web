@@ -47,6 +47,8 @@ start.addEventListener("click", () => {
     if (timeRemaining <= 0) { //safer to prevent going below 0
         clearInterval(interval)
         interval = null;
+        isRunning = false;
+        startToPause();
     }     
     }, 1000); //runs every sec
 })
