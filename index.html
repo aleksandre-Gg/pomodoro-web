@@ -7,32 +7,32 @@
     <link href="./dist/output.css" rel="stylesheet">
 	<script src="timer-logic.js" defer></script>
 </head>
-<body class="bg-slate-700 min-h-screen flex flex-col font-inter font-bold">
+<body class="bg-stone-300 min-h-screen flex flex-col font-inter font-bold">
   <!--nav-->
-  <header class="w-full text-lg text-slate-300">
+  <header class="w-full text-lg text-neutral-800">
 	<nav class="flex gap-6 md:gap-10 p-4 justify-center">
-		<a href="#" class="hover:text-sky-200 transition">Settings</a>
-		<a href="#" class="hover:text-sky-200 transition">Statistics</a>
-		<a href="#" class="hover:text-sky-200 transition">Theme</a>
+		<a href="#">Settings</a>
+		<a href="#">Statistics</a>
+		<a href="#">Theme</a>
 	</nav>
   </header>
     <main class="flex justify-center items-center flex-1">
-	  <section class="border-2 border-slate-300 p-6 rounded-2xl text-center">
+	  <section class="border-2 border-neutral-800 p-6 rounded-2xl text-center">
 	<!--timer & focus container-->
-		<div class="text-slate-300 m-6 text-2xl">
-		  <div id="timer-ring" class="border-8 p-6 border-slate-300 rounded-full w-64 h-64 flex flex-col items-center justify-center">
+		<div class="text-neutral-800 m-6 text-2xl">
+		  <div id="timer-ring" class="border-8 p-6 border-orange-800 rounded-full w-64 h-64 flex flex-col items-center justify-center">
           	<div id="timer" class="text-6xl my-6"></div>
 			   <div class="flex gap-3">
 				  <span id="focus">Focus</span>
 				  <span id="divider">|</span> 
-				  <span id="break" class="text-slate-400 font-extralight">Break</span>
+				  <span id="break" class="text-neutral-800/70 font-extralight">Break</span>
 				</div>
 		  	</div>
 		</div>
 	<!--buttons-->
 		<div class="action-buttons flex justify-center gap-6">
-        	<button id="start-button" class="cursor-pointer border-2 border-slate-300 rounded-full text-slate-300 px-6 py-2 hover:bg-slate-300 hover:text-slate-700 transition">Start</button>
-        	<button id="reset-button" class="cursor-pointer border-2 border-slate-300 rounded-full text-slate-300 px-6 py-2 hover:bg-slate-300 hover:text-slate-700 transition">Reset</button>
+        	<button id="start-button" class="cursor-pointer border-2 border-neutral-800 bg-neutral-800 rounded-full text-stone-300 px-6 py-2 hover:bg-stone-300 hover:text-neutral-800 transition">Start</button>
+        	<button id="reset-button" class="cursor-pointer border-2 border-neutral-800 rounded-full text-neutral-800 px-6 py-2">Reset</button>
 		</div>
 	  </section>
     </main>
