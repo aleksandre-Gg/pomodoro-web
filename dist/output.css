@@ -8,25 +8,26 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-800: oklch(44.4% 0.177 26.899);
-    --color-orange-700: oklch(55.3% 0.195 38.402);
     --color-orange-800: oklch(47% 0.157 37.304);
-    --color-amber-800: oklch(47.3% 0.137 46.201);
-    --color-sky-200: oklch(90.1% 0.058 230.902);
-    --color-slate-300: oklch(86.9% 0.022 252.894);
     --color-neutral-800: oklch(26.9% 0 none);
     --color-stone-300: oklch(86.9% 0.005 56.366);
     --spacing: 0.25rem;
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
+    --text-5xl: 3rem;
+    --text-5xl--line-height: 1;
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
-    --font-weight-extralight: 200;
     --font-weight-light: 300;
     --font-weight-bold: 700;
-    --font-weight-black: 900;
     --radius-2xl: 1rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -243,20 +244,11 @@
     border-style: var(--tw-border-style);
     border-width: 8px;
   }
-  .border-amber-800 {
-    border-color: var(--color-amber-800);
-  }
   .border-neutral-800 {
     border-color: var(--color-neutral-800);
   }
-  .border-orange-700 {
-    border-color: var(--color-orange-700);
-  }
   .border-orange-800 {
     border-color: var(--color-orange-800);
-  }
-  .border-red-800 {
-    border-color: var(--color-red-800);
   }
   .bg-neutral-800 {
     background-color: var(--color-neutral-800);
@@ -283,6 +275,18 @@
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+  .text-5xl {
+    font-size: var(--text-5xl);
+    line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
   .text-6xl {
     font-size: var(--text-6xl);
     line-height: var(--tw-leading, var(--text-6xl--line-height));
@@ -291,17 +295,13 @@
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
   }
-  .font-black {
-    --tw-font-weight: var(--font-weight-black);
-    font-weight: var(--font-weight-black);
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
-  }
-  .font-extralight {
-    --tw-font-weight: var(--font-weight-extralight);
-    font-weight: var(--font-weight-extralight);
   }
   .font-light {
     --tw-font-weight: var(--font-weight-light);
@@ -309,12 +309,6 @@
   }
   .text-neutral-800 {
     color: var(--color-neutral-800);
-  }
-  .text-neutral-800\/70 {
-    color: color-mix(in srgb, oklch(26.9% 0 none) 70%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-neutral-800) 70%, transparent);
-    }
   }
   .text-neutral-800\/80 {
     color: color-mix(in srgb, oklch(26.9% 0 none) 80%, transparent);
@@ -331,23 +325,11 @@
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   @media (hover: hover) {
-    .hover\:bg-neutral-800:hover {
-      background-color: var(--color-neutral-800);
-    }
-    .hover\:bg-slate-300:hover {
-      background-color: var(--color-slate-300);
-    }
     .hover\:bg-stone-300:hover {
       background-color: var(--color-stone-300);
     }
     .hover\:text-neutral-800:hover {
       color: var(--color-neutral-800);
-    }
-    .hover\:text-sky-200:hover {
-      color: var(--color-sky-200);
-    }
-    .hover\:text-stone-300:hover {
-      color: var(--color-stone-300);
     }
   }
   @media (width >= 48rem) {
