@@ -32,8 +32,12 @@
 	  <section class="border-1 border-neutral-800 p-6 rounded-2xl text-center">
 	<!--timer & focus container-->
 		<div class="text-neutral-800 m-6 text-2xl">
-		  <div id="timer-ring" class="border-8 p-6 border-orange-800 rounded-full w-64 h-64 flex flex-col items-center justify-center">
-          	<div id="timer" class="text-5xl my-6"></div>
+		  <div id="timer-ring" class="relative p-6 rounded-full w-64 h-64 flex flex-col items-center justify-center">
+			<svg viewBox="0 0 100 100" class="absolute inset-0 -rotate-90">
+			  <circle cx="50" cy="50" r="45" fill="none" stroke-width="4"/>
+			  <circle id="ring" cx="50" cy="50" r="45" fill="none" stroke-width="4" pathLength="1" stroke-dasharray="1.01 2" stroke-dashoffset="0" class="stroke-orange-800 transition-[stroke-dashoffset] duration-1000 ease-linear"/>
+			</svg>
+			<div id="timer" class="relative text-5xl my-6"></div>
 			   <div class="flex gap-3">
 				  <span id="focus">Focus</span>
 				  <span id="divider">|</span> 

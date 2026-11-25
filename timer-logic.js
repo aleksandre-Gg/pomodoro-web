@@ -1,8 +1,11 @@
 const start = document.getElementById("start-button");
 const reset = document.getElementById("reset-button");
 const timer = document.getElementById("timer");
+const ring =  document.getElementById("ring");
 
-let timeRemaining = 3000; //50 minutes
+const total = 3000; //50 minutes
+let timeRemaining = total;
+
 let interval;
 let isRunning = false;
 
@@ -11,6 +14,7 @@ const updateTimer = () => {
     const seconds = timeRemaining % 60; 
 
     timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}` 
+    updateRing();
     //padstart for adding 0 in front of numbers below 10. 
     // 2 to make sure it stays 2 digits
     //padstart works on strings only 
@@ -25,6 +29,8 @@ const startToPause = () => {
     start.textContent = "Start";
   }
 }
+
+const updateRing = () => ring.style.strokeDashoffset = -(1 - timeRemaining / total); //pathlength 1; 1=3000
 
 start.addEventListener("click", () => {
     if (isRunning) { //stop interval, timeRemaining stores its value
