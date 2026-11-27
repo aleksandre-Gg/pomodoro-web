@@ -5,7 +5,14 @@ const ring =  document.getElementById("ring");
 const timeFocus = document.getElementById("focus")
 const timeBreak = document.getElementById("break")
 
-const total = 3000; //50 minutes
+let mode = "focus"
+
+const durations = {
+   focus: 50 * 60,
+   break: 10 * 60
+}
+
+let total = durations[mode];
 let timeRemaining = total;
 
 let interval;
@@ -35,38 +42,56 @@ const startToPause = () => {
 
 const updateRing = () => ring.style.strokeDashoffset = -(1 - timeRemaining / total); //pathlength 1; 1=3000
 
+const dimLabels = () => {
+    timeFocus.classList.add("font-light","text-neutral-800/80")
+    timeBreak.classList.add("font-light","text-neutral-800/80")
+    timeFocus.classList.remove("font-bold","text-neutral-800")
+    timeBreak.classList.remove("font-bold","text-neutral-800")
+}
+const updateModeLabels = () => {
+    dimLabels()
+
+    if (mode === "focus") {
+        timeFocus.classList.remove("font-light","text-neutral-800/80")
+        timeFocus.classList.add("font-bold", "text-neutral-800")
+    } else if (mode === "break") {
+        timeBreak.classList.remove("font-light","text-neutral-800/80")
+        timeBreak.classList.add("font-bold", "text-neutral-800")
+    }
+}
+
 start.addEventListener("click", () => {
     if (isRunning) { //pause event! stop interval, timeRemaining stores its value
         clearInterval(interval)
         interval = null;
         isRunning = false;
-        timeFocus.classList.add("font-light", "text-neutral-800/80")
 
         startToPause();
+        dimLabels();
         return;
     }
 
     if (timeRemaining <= 0) return;
 
     isRunning = true; //start event
-    timeFocus.classList.remove("font-light", "text-neutral-800/80");
-    timeFocus.classList.add("font-bold", "text-neutral-800") 
-
     startToPause();
+    updateModeLabels();
     
     interval = setInterval(() => {
         timeRemaining = timeRemaining - 1; //subtracted with each run
         updateTimer()   
 
-    if (timeRemaining <= 0) { //timer is finished, safer to prevent going below 0
-        clearInterval(interval)
-        interval = null;
-        isRunning = false;
-
-        timeFocus.classList.remove("font-bold", "text-neutral-800"); 
-        timeFocus.classList.add("font-light", "text-neutral-800/80");
-        
+    if (timeRemaining < 0) { //timer is below 0, switching to break/focus
+        if (mode === "focus") {
+            mode = "break"
+        } else {
+            mode = "focus"
+        }
+        total = durations[mode]
+        timeRemaining = total
+        updateTimer()
         startToPause();
+        updateModeLabels();
     }     
     }, 1000); //runs every sec
 })
@@ -75,13 +100,17 @@ reset.addEventListener("click", () => {
    clearInterval(interval) 
    interval = null;
    isRunning = false
-   timeRemaining = 50 * 60
+   mode = "focus"
+   total = durations[mode]
+   timeRemaining = total;
    updateTimer();
-   
+   dimLabels();
+
    start.dataset.state = "idle";
    start.textContent = "Start";
+   
 
-   timeFocus.classList.add("font-light", "text-neutral-800/80")
 })
 
 updateTimer()
+dimLabels()
