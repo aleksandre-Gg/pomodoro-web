@@ -84,11 +84,16 @@ start.addEventListener("click", () => {
     if (timeRemaining < 0) { //timer is below 0, switching to break/focus
         if (mode === "focus") {
             mode = "break"
+            ring.classList.remove("stroke-orange-800");
+            ring.classList.add("stroke-teal-600")
         } else {
             mode = "focus"
-        }
+            ring.classList.remove("stroke-teal-600");
+            ring.classList.add("stroke-orange-800")
+        }   
         total = durations[mode]
         timeRemaining = total
+        
         updateTimer()
         startToPause();
         updateModeLabels();
@@ -103,13 +108,15 @@ reset.addEventListener("click", () => {
    mode = "focus"
    total = durations[mode]
    timeRemaining = total;
+   
    updateTimer();
    dimLabels();
+   
+   ring.classList.remove("stroke-teal-600")
+   ring.classList.add("stroke-orange-800");
 
    start.dataset.state = "idle";
    start.textContent = "Start";
-   
-
 })
 
 updateTimer()
